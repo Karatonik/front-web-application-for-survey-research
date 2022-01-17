@@ -86,7 +86,7 @@ export class ResearchScreenComponent implements OnInit {
     this.queryIterator++;
     this.progressBarValue = (this.queryIterator / this.lenghtResearch) * 100;
     if (this.queryIterator == this.lenghtResearch) {
-      this.service.set(this.sId, this.result).subscribe(value => {
+      this.service.setSurveyResult(this.sId, this.result).subscribe(value => {
         alert("Good Job");
         let email = localStorage.getItem('email');
         // @ts-ignore

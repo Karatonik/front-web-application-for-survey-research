@@ -24,7 +24,7 @@ export class LoginScreenComponent implements OnInit {
           localStorage.setItem('token', value.token);
           localStorage.setItem('email', value.email);
           localStorage.setItem('points', value.points.toLocaleString());
-          localStorage.setItem('accountType',value.accountType);
+          localStorage.setItem('accountType', value.accountType);
           this.router.navigate(['home']);
         } else {
           if (value.email == null) {

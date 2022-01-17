@@ -1,15 +1,16 @@
 <app-navi-bar></app-navi-bar>
-<mat-card class="mat-card" >
-  <button mat-button style = "alignment: center;width: 100%" (click)="check()" *ngIf="showCheck">check status</button>
-<button mat-button style = "alignment: center;width: 100%" (click)="personalDataMaker()" *ngIf="showPersonalData">
-  complete your personal details</button>
-  <h1 style = "text-align: center;width: 100%" *ngIf="showInfo">EVERYTHING IS READY, THERE ARE SURVEYS AIMED FOR YOU</h1>
+<mat-card class="mat-card">
+  <button (click)="check()" *ngIf="showCheck" mat-button style="alignment: center;width: 100%">check status</button>
+  <button (click)="personalDataMaker()" *ngIf="showPersonalData" mat-button style="alignment: center;width: 100%">
+    complete your personal details
+  </button>
+  <h1 *ngIf="showInfo" style="text-align: center;width: 100%">EVERYTHING IS READY, THERE ARE SURVEYS AIMED FOR YOU</h1>
   <hr class="hr1">
   <div *ngIf="showInfo">
-  <div    *ngFor="let survey of surveyList;">
-    <h3 style = "text-align: center;width: 100%">  {{survey.name}}</h3>
-    <button mat-button style="width: 100%" (click)="start(survey.id)">Make up</button>
-    <hr class="hr1">
-  </div>
+    <div *ngFor="let survey of surveyList;">
+      <h3 style="text-align: center;width: 100%">  {{survey.name}}</h3>
+      <button (click)="start(survey.id)" mat-button style="width: 100%">Make up</button>
+      <hr class="hr1">
+    </div>
   </div>
 </mat-card>

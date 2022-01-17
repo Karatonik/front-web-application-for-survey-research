@@ -1,6 +1,6 @@
 export class GraficoModel {
-  value:number;
-  color:string;
-  size:string;
-  legend:string;
+  value: number;
+  color: string;
+  size: string;
+  legend: string;
 }

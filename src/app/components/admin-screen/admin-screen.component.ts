@@ -1,11 +1,9 @@
-import {Component, OnInit, Output, ViewChild} from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import {Component, OnInit, Output} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Reward, UserInfo} from 'src/app/models/login';
 import {RewardService} from 'src/app/services/reward.service';
 import {UserService} from 'src/app/services/user.service';
-
 
 
 @Component({
@@ -22,14 +20,14 @@ export class AdminScreenComponent implements OnInit {
   quantity: number;
   reward: Reward;
 
-  dataSourceUser: MatTableDataSource<UserInfo> ;
-  dataSourceReward: MatTableDataSource<Reward> ;
+  dataSourceUser: MatTableDataSource<UserInfo>;
+  dataSourceReward: MatTableDataSource<Reward>;
 
-  displayedColumnsUser: string[] = ['email','points','activated','accountType','Action'];
-  displayedColumnsReward: string[] = ['name','cost','quantity','Action'];
+  displayedColumnsUser: string[] = ['email', 'points', 'activated', 'accountType', 'Action'];
+  displayedColumnsReward: string[] = ['name', 'cost', 'quantity', 'Action'];
 
-  @Output() userRow: UserInfo ;
-  @Output() rewardRow: Reward ;
+  @Output() userRow: UserInfo;
+  @Output() rewardRow: Reward;
 
   constructor(public router: Router, private props: ActivatedRoute, public userService: UserService
     , public rewardService: RewardService) {
@@ -38,7 +36,7 @@ export class AdminScreenComponent implements OnInit {
   ngOnInit(): void {
     // @ts-ignore
     this.adminEmail = localStorage.getItem('email');
-    if(localStorage.getItem('accountType')!='admin'){
+    if (localStorage.getItem('accountType') != 'admin') {
       this.router.navigate(['home']);
     }
     this.initUserList();
@@ -46,10 +44,9 @@ export class AdminScreenComponent implements OnInit {
   }
 
 
-
   setReward() {
 
-    let reward: Reward ={
+    let reward: Reward = {
       name: this.name,
       cost: this.cost,
       quantity: this.quantity
@@ -65,8 +62,8 @@ export class AdminScreenComponent implements OnInit {
 
   initUserList() {
     this.userService.getAllUsers(this.adminEmail).subscribe(value => {
-      console.log(value);
-      this.dataSourceUser = new MatTableDataSource<UserInfo>(value);
+        console.log(value);
+        this.dataSourceUser = new MatTableDataSource<UserInfo>(value);
       }, (err) => {
         alert("Error")
       }
@@ -75,16 +72,18 @@ export class AdminScreenComponent implements OnInit {
 
   initRewardList() {
     this.rewardService.getAllRewards().subscribe(value => {
-      console.log(value);
-      this.dataSourceReward = new MatTableDataSource<Reward>(value);
+        console.log(value);
+        this.dataSourceReward = new MatTableDataSource<Reward>(value);
       }, (err) => {
         alert("Error")
       }
     );
   }
+
   onUserRowClick(row: UserInfo): void {
     this.userRow = row;
   }
+
   onRewardRowClick(row: Reward): void {
     this.rewardRow = row;
   }
@@ -115,6 +114,7 @@ export class AdminScreenComponent implements OnInit {
     filterValue = filterValue.toLowerCase();
     this.dataSourceReward.filter = filterValue;
   }
+
   increasePermissionsForUser(element: any) {
     this.userService.increasePermissionsForUser(this.adminEmail, element.email).subscribe(value => {
         if (value) {
@@ -128,6 +128,7 @@ export class AdminScreenComponent implements OnInit {
       }
     );
   }
+
   reducePermissionsForUser(element: any) {
     this.userService.reducePermissionsForUser(this.adminEmail, element.email).subscribe(value => {
         if (value) {

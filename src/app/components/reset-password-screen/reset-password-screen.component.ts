@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AuthService} from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-reset-password-screen',
@@ -8,10 +8,11 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./reset-password-screen.component.css']
 })
 export class ResetPasswordScreenComponent implements OnInit {
-key: string = "";
-  password:string ="";
+  key: string = "";
+  password: string = "";
   testPassword: string = "";
-  constructor(private props: ActivatedRoute , public router: Router , private  auth: AuthService ) {
+
+  constructor(private props: ActivatedRoute, public router: Router, private auth: AuthService) {
     // @ts-ignore
     this.key = this.props.snapshot.paramMap.get('key')
   }
@@ -19,21 +20,20 @@ key: string = "";
   ngOnInit(): void {
   }
 
-
   submit() {
     if (this.password == this.testPassword) {
       this.auth.changePassword(this.key, this.password).subscribe(value => {
-        if(value){
-          alert("New password is save");
-          this.router.navigate(['']);
-        }else{
-          alert("Service error")
-        }
+          if (value) {
+            alert("New password is save");
+            this.router.navigate(['']);
+          } else {
+            alert("Service error")
+          }
         }, (err) => {
           alert("ERROR")
         }
       );
-    }else {
+    } else {
       alert("passwords arent equals")
     }
   }

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-navi-bar',
@@ -8,14 +8,14 @@ import { Router } from '@angular/router';
 })
 export class NaviBarComponent implements OnInit {
   show: any;
-  points: String ="";
-  accountType: string ;
+  points: String = "";
+  accountType: string;
 
   constructor(public router: Router) {
     // @ts-ignore
-    this.points =localStorage.getItem("points");
+    this.points = localStorage.getItem("points");
     // @ts-ignore
-    this.accountType=localStorage.getItem('accountType');
+    this.accountType = localStorage.getItem('accountType');
   }
 
   ngOnInit(): void {

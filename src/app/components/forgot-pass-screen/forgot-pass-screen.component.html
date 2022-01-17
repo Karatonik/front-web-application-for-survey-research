@@ -1,11 +1,11 @@
 <div class="center-content">
   <mat-card class="example-card">
-    <mat-label style="font-size: 20px" >Enter address email </mat-label>
+    <mat-label style="font-size: 20px">Enter address email</mat-label>
     <div class="example-full-width">
-      <input type="email" matInput placeholder="Email" value="" [(ngModel)]="email">
+      <input [(ngModel)]="email" matInput placeholder="Email" type="email" value="">
       <mat-icon>email</mat-icon>
     </div>
-    <button class="mat-button" (click)="sendMail()">Send</button>
-    <button class="mat-button" (click)="goBack()">Back</button>
+    <button (click)="sendMail()" class="mat-button">Send</button>
+    <button (click)="goBack()" class="mat-button">Back</button>
   </mat-card>
 </div>

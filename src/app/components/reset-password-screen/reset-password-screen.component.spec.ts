@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ResetPasswordScreenComponent } from './reset-password-screen.component';
+import {ResetPasswordScreenComponent} from './reset-password-screen.component';
 
 describe('ResetPasswordScreenComponent', () => {
   let component: ResetPasswordScreenComponent;
@@ -8,9 +8,9 @@ describe('ResetPasswordScreenComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ResetPasswordScreenComponent ]
+      declarations: [ResetPasswordScreenComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

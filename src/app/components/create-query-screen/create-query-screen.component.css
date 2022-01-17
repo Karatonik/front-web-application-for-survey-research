@@ -1,18 +1,22 @@
 mat-slider {
   width: 100%;
 }
-.hr1{
-  width:100%;
+
+.hr1 {
+  width: 100%;
   border-color: black;
 }
-.horizontal{
+
+.horizontal {
   display: flex;
   flex-direction: row;
 }
-.halfwidth{
+
+.halfwidth {
   width: 48%;
-  margin-left:1%;
+  margin-left: 1%;
 }
+
 .vl {
   margin-left: 1%;
   margin-right: 1%;

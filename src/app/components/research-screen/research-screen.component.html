@@ -1,28 +1,27 @@
 <app-navi-bar></app-navi-bar>
-<mat-card class="mat-card" >
-<mat-progress-bar mode="determinate" value="{{progressBarValue}}"></mat-progress-bar>
+<mat-card class="mat-card">
+  <mat-progress-bar mode="determinate" value="{{progressBarValue}}"></mat-progress-bar>
   <h1>{{query.question}}</h1>
 
 
   <div *ngIf="openQuery">
-    <textarea name="name" rows="5" cols="40" style="width: 100%;height: 100%"  [(ngModel)]="openQueryValue"></textarea>
+    <textarea [(ngModel)]="openQueryValue" cols="40" name="name" rows="5" style="width: 100%;height: 100%"></textarea>
   </div>
 
   <div *ngIf="!openQuery">
-  <h3>Maximum number of responses: {{query.maxAnswer}}</h3>
-  <hr class="hr1">
-  <h3 >Answers :{{answers.toString()}}</h3>
-  <hr class="hr1">
-  <div *ngFor="let x of query.answers">
-    <button  (click)="answers=editList(answers,x)"  >X</button>
-    <label>{{x}}</label>
+    <h3>Maximum number of responses: {{query.maxAnswer}}</h3>
+    <hr class="hr1">
+    <h3>Answers :{{answers.toString()}}</h3>
+    <hr class="hr1">
+    <div *ngFor="let x of query.answers">
+      <button (click)="answers=editList(answers,x)">X</button>
+      <label>{{x}}</label>
+    </div>
   </div>
+
+  <div>
+    <button (click)="previous()" *ngIf="queryIterator>0" mat-button style="alignment: center;width: 100%">Previous
+    </button>
+    <button (click)="next()" mat-button style="alignment: center;width: 100%">Next</button>
   </div>
-
-
-
-<div>
-  <button *ngIf = "queryIterator>0" mat-button style="alignment: center;width: 100%" (click)="previous()">Previous</button>
-<button  mat-button style="alignment: center;width: 100%" (click)="next()">Next</button>
-</div>
 </mat-card>

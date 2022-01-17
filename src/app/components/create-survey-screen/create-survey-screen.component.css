@@ -3,6 +3,7 @@
   margin-right: auto;
   text-align: -webkit-center;
 }
+
 .example-form {
   min-width: 100px;
   max-width: 500px;
@@ -10,7 +11,7 @@
 }
 
 .example-full-width {
-display: grid;
+  display: grid;
 
   width: 100%;
 }

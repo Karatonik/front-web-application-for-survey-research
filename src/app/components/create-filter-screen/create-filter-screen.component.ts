@@ -70,9 +70,9 @@ export class CreateFilterScreenComponent implements OnInit {
 
   submit() {
     console.log(this.surveyFilter.genders);
-    this.service.edit(this.surveyFilter).subscribe(value=>{
+    this.service.editSurveyFilter(this.surveyFilter).subscribe(value => {
       console.log(value);
-      if(this.surveyFilter.id == value.id){
+      if (this.surveyFilter.id == value.id) {
         alert("Saved");
       }
     })
@@ -82,7 +82,7 @@ export class CreateFilterScreenComponent implements OnInit {
   next() {
     this.surveyFilter.surveyId = this.id;
     console.log(this.surveyFilter);
-    this.service.set(this.surveyFilter).subscribe(value => {
+    this.service.setSurveyFilter(this.surveyFilter).subscribe(value => {
         console.log(value);
         if (value.id == null) {
           alert("Error")

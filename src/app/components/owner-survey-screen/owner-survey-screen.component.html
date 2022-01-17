@@ -1,34 +1,34 @@
 <app-navi-bar></app-navi-bar>
 
-  <mat-card class="mat-card">
-    <button class="mat-button" style="width: 100%" (click)="createSurvey()" >Add new survey</button>
-    <mat-form-field >
-      <input matInput placeholder="Search" (keyup)="applyFilter($event.target.value)" >
+<mat-card class="mat-card">
+  <button (click)="createSurvey()" class="mat-button" style="width: 100%">Add new survey</button>
+  <mat-form-field>
+    <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Search">
 
-    </mat-form-field>
-  </mat-card>
+  </mat-form-field>
+</mat-card>
 <div class="example-container mat-elevation-z8">
-  <table mat-table style = "width: 100%" [dataSource]="dataSource" >
+  <table [dataSource]="dataSource" mat-table style="width: 100%">
 
-    <ng-container matColumnDef="Action"  >
+    <ng-container matColumnDef="Action">
 
-      <mat-header-cell *matHeaderCellDef > Action </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Action</mat-header-cell>
 
-      <mat-cell *matCellDef="let element" >
+      <mat-cell *matCellDef="let element">
 
-        <button class="mat-button"(click)="analyzeSurvey(element)" >Analyze</button>
-        <button class="mat-button"(click)="filterSurvey(element)" >Filter</button>
-        <button class="mat-button"(click)="deleteSurvey(element)" >Delete</button>
+        <button (click)="analyzeSurvey(element)" class="mat-button">Analyze</button>
+        <button (click)="filterSurvey(element)" class="mat-button">Filter</button>
+        <button (click)="deleteSurvey(element)" class="mat-button">Delete</button>
       </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Id</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
     </ng-container>
 

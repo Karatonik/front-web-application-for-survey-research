@@ -1,8 +1,8 @@
 <div class="grafico">
   <div class="content">
-    <div class="bars" *ngFor="let item of List">
+    <div *ngFor="let item of List" class="bars">
       <span>{{item.value}}</span>
-      <div class="bar" [style.background-color]="item.color" [style.height]='item.size'></div>
+      <div [style.background-color]="item.color" [style.height]='item.size' class="bar"></div>
     </div>
   </div>
   <div class="line"></div>

@@ -1,35 +1,35 @@
 <app-navi-bar></app-navi-bar>
 <mat-card class="mat-card">
   <h3>1. Age : Min = {{surveyFilter.ageMin}} , Max = {{surveyFilter.ageMax}}</h3>
-  <mat-slider class="mat-slider"
-              thumbLabel
+  <mat-slider (input)="surveyFilter.ageMin=onInputChangeMin(surveyFilter.ageMin,surveyFilter.ageMax,$event )"
               [displayWith]="formatLabel"
-              (input)="surveyFilter.ageMin=onInputChangeMin(surveyFilter.ageMin,surveyFilter.ageMax,$event )"
-              tickInterval="1"
-              value="20"
-              step="1"
-              min="13"
+              aria-label="units"
+              class="mat-slider"
               max="{{surveyFilter.ageMax}}"
-              aria-label="units"></mat-slider>
-  <mat-slider class="mat-slider"
-              thumbLabel
-              [displayWith]="formatLabel"
-              (input)="surveyFilter.ageMax=onInputChangeMax(surveyFilter.ageMin,surveyFilter.ageMax,$event )"
-              tickInterval="1"
-              value="50"
+              min="13"
               step="1"
-              min="{{surveyFilter.ageMin}}"
+              thumbLabel
+              tickInterval="1"
+              value="20"></mat-slider>
+  <mat-slider (input)="surveyFilter.ageMax=onInputChangeMax(surveyFilter.ageMin,surveyFilter.ageMax,$event )"
+              [displayWith]="formatLabel"
+              aria-label="units"
+              class="mat-slider"
               max="99"
-              aria-label="units"></mat-slider>
+              min="{{surveyFilter.ageMin}}"
+              step="1"
+              thumbLabel
+              tickInterval="1"
+              value="50"></mat-slider>
   <hr class="hr1">
   <div class="horizontal">
     <h3>2.Education </h3>
     <mat-form-field class="halfwidth">
       <mat-select
-        [ngModel]="surveyFilter.educations"
-        (ngModelChane)="surveyFilter.educations" multiple>
-        <mat-option *ngFor="let x of educationsList" [value]="x"
-                    (click)="surveyFilter.educations=editList(surveyFilter.educations,x)">
+        (ngModelChane)="surveyFilter.educations"
+        [ngModel]="surveyFilter.educations" multiple>
+        <mat-option (click)="surveyFilter.educations=editList(surveyFilter.educations,x)" *ngFor="let x of educationsList"
+                    [value]="x">
           {{x}}
         </mat-option>
       </mat-select>
@@ -38,10 +38,10 @@
     <h3 style="margin-left: 1%">3.Gender</h3>
     <mat-form-field class="halfwidth">
       <mat-select
-        [ngModel]="surveyFilter.genders"
-        (ngModelChane)="surveyFilter.genders" multiple>
-        <mat-option *ngFor="let x of gendersList" [value]="x"
-                    (click)="surveyFilter.genders=editList(surveyFilter.genders,x)">
+        (ngModelChane)="surveyFilter.genders"
+        [ngModel]="surveyFilter.genders" multiple>
+        <mat-option (click)="surveyFilter.genders=editList(surveyFilter.genders,x)" *ngFor="let x of gendersList"
+                    [value]="x">
           {{x}}
         </mat-option>
       </mat-select>
@@ -50,35 +50,35 @@
 
   <hr class="hr1">
   <h3>4. Gross earnings : Min = {{surveyFilter.grossEarningsMin}} , Max = {{surveyFilter.grossEarningsMax}} (euro)</h3>
-  <mat-slider class="mat-slider"
-              thumbLabel
+  <mat-slider (input)="surveyFilter.grossEarningsMin=onInputChangeMin(surveyFilter.grossEarningsMin,surveyFilter.grossEarningsMax,$event )"
               [displayWith]="formatLabel"
-              (input)="surveyFilter.grossEarningsMin=onInputChangeMin(surveyFilter.grossEarningsMin,surveyFilter.grossEarningsMax,$event )"
-              tickInterval="1"
-              value="2500"
-              step="1"
-              min="0"
+              aria-label="units"
+              class="mat-slider"
               max="{{surveyFilter.grossEarningsMax}}"
-              aria-label="units"></mat-slider>
-  <mat-slider class="mat-slider"
-              thumbLabel
-              [displayWith]="formatLabel"
-              (input)="surveyFilter.grossEarningsMax=onInputChangeMax(surveyFilter.grossEarningsMin,surveyFilter.grossEarningsMax,$event )"
-              tickInterval="1"
-              value="3000"
+              min="0"
               step="1"
-              min="{{surveyFilter.grossEarningsMin}}"
+              thumbLabel
+              tickInterval="1"
+              value="2500"></mat-slider>
+  <mat-slider (input)="surveyFilter.grossEarningsMax=onInputChangeMax(surveyFilter.grossEarningsMin,surveyFilter.grossEarningsMax,$event )"
+              [displayWith]="formatLabel"
+              aria-label="units"
+              class="mat-slider"
               max="29999"
-              aria-label="units"></mat-slider>
+              min="{{surveyFilter.grossEarningsMin}}"
+              step="1"
+              thumbLabel
+              tickInterval="1"
+              value="3000"></mat-slider>
   <hr class="hr1">
   <div class="horizontal">
     <h3>5.Labor_sectors</h3>
     <mat-form-field class="halfwidth">
       <mat-select
-        [ngModel]="surveyFilter.laborSectors"
-        (ngModelChane)="surveyFilter.laborSectors" multiple>
-        <mat-option *ngFor="let x of laborSectorsList" [value]="x"
-                    (click)="surveyFilter.laborSectors =editList(surveyFilter.laborSectors,x)">
+        (ngModelChane)="surveyFilter.laborSectors"
+        [ngModel]="surveyFilter.laborSectors" multiple>
+        <mat-option (click)="surveyFilter.laborSectors =editList(surveyFilter.laborSectors,x)" *ngFor="let x of laborSectorsList"
+                    [value]="x">
           {{x}}
         </mat-option>
       </mat-select>
@@ -87,10 +87,10 @@
     <h3>6.Marital_statuses</h3>
     <mat-form-field class="halfwidth">
       <mat-select
-        [ngModel]="surveyFilter.maritalStatuses"
-        (ngModelChane)="surveyFilter.maritalStatuses" multiple>
-        <mat-option *ngFor="let x of maritalStatusesList" [value]="x"
-                    (click)="surveyFilter.maritalStatuses =editList(surveyFilter.maritalStatuses,x)">
+        (ngModelChane)="surveyFilter.maritalStatuses"
+        [ngModel]="surveyFilter.maritalStatuses" multiple>
+        <mat-option (click)="surveyFilter.maritalStatuses =editList(surveyFilter.maritalStatuses,x)" *ngFor="let x of maritalStatusesList"
+                    [value]="x">
           {{x}}
         </mat-option>
       </mat-select>
@@ -100,52 +100,53 @@
 
   <h3>7. Size of the home town : Min =  {{surveyFilter.sizeOfTheHometownMin}} , Max
     = {{surveyFilter.sizeOfTheHometownMax}}  (people)</h3>
-  <mat-slider class="mat-slider"
-              thumbLabel
+  <mat-slider (input)="surveyFilter.sizeOfTheHometownMin=onInputChangeMin(surveyFilter.sizeOfTheHometownMin,surveyFilter.sizeOfTheHometownMax,$event )"
               [displayWith]="formatLabel"
-              (input)="surveyFilter.sizeOfTheHometownMin=onInputChangeMin(surveyFilter.sizeOfTheHometownMin,surveyFilter.sizeOfTheHometownMax,$event )"
-              tickInterval="1"
-              value="60000"
-              step="100"
-              min="0"
+              aria-label="units"
+              class="mat-slider"
               max="{{surveyFilter.sizeOfTheHometownMax}}"
-              aria-label="units"></mat-slider>
-  <mat-slider class="mat-slider"
-              thumbLabel
-              [displayWith]="formatLabel"
-              (input)="surveyFilter.sizeOfTheHometownMax=onInputChangeMax(surveyFilter.sizeOfTheHometownMin,surveyFilter.sizeOfTheHometownMax,$event )"
-              tickInterval="1"
-              value="100000"
+              min="0"
               step="100"
-              min="{{surveyFilter.sizeOfTheHometownMin}}"
+              thumbLabel
+              tickInterval="1"
+              value="60000"></mat-slider>
+  <mat-slider (input)="surveyFilter.sizeOfTheHometownMax=onInputChangeMax(surveyFilter.sizeOfTheHometownMin,surveyFilter.sizeOfTheHometownMax,$event )"
+              [displayWith]="formatLabel"
+              aria-label="units"
+              class="mat-slider"
               max="4000000"
-              aria-label="units"></mat-slider>
+              min="{{surveyFilter.sizeOfTheHometownMin}}"
+              step="100"
+              thumbLabel
+              tickInterval="1"
+              value="100000"></mat-slider>
   <hr class="hr1">
   <h3>8. Size of town : Min =  {{surveyFilter.sizeOfTownMin}} , Max = {{surveyFilter.sizeOfTownMax}} (people)</h3>
-  <mat-slider class="mat-slider"
-              thumbLabel
+  <mat-slider (input)="surveyFilter.sizeOfTownMin=onInputChangeMin(surveyFilter.sizeOfTownMin,surveyFilter.sizeOfTownMax,$event )"
               [displayWith]="formatLabel"
-              (input)="surveyFilter.sizeOfTownMin=onInputChangeMin(surveyFilter.sizeOfTownMin,surveyFilter.sizeOfTownMax,$event )"
-              tickInterval="1"
-              value="60000"
-              step="100"
-              min="0"
+              aria-label="units"
+              class="mat-slider"
               max="{{surveyFilter.sizeOfTownMax}}"
-              aria-label="units"></mat-slider>
-  <mat-slider class="mat-slider"
-              thumbLabel
-              [displayWith]="formatLabel"
-              (input)="surveyFilter.sizeOfTownMax=onInputChangeMax(surveyFilter.sizeOfTownMin,surveyFilter.sizeOfTownMax,$event )"
-              tickInterval="1"
-              value="100000"
+              min="0"
               step="100"
-              min="{{surveyFilter.sizeOfTownMin}}"
+              thumbLabel
+              tickInterval="1"
+              value="60000"></mat-slider>
+  <mat-slider (input)="surveyFilter.sizeOfTownMax=onInputChangeMax(surveyFilter.sizeOfTownMin,surveyFilter.sizeOfTownMax,$event )"
+              [displayWith]="formatLabel"
+              aria-label="units"
+              class="mat-slider"
               max="4000000"
-              aria-label="units"></mat-slider>
+              min="{{surveyFilter.sizeOfTownMin}}"
+              step="100"
+              thumbLabel
+              tickInterval="1"
+              value="100000"></mat-slider>
 
 
   <hr class="hr1">
-  <button mat-button style="alignment: center;width: 100%" *ngIf="!editMode" (click)="next()" >Next</button>
-  <button mat-button style="alignment: center;width: 100%" *ngIf="editMode&&(!showSubmit)" (click)="edit()" >Edit</button>
-  <button mat-button style="alignment: center;width: 100%" *ngIf="showSubmit" (click)="submit()" >Submit</button>
+  <button (click)="next()" *ngIf="!editMode" mat-button style="alignment: center;width: 100%">Next</button>
+  <button (click)="edit()" *ngIf="editMode&&(!showSubmit)" mat-button style="alignment: center;width: 100%">Edit
+  </button>
+  <button (click)="submit()" *ngIf="showSubmit" mat-button style="alignment: center;width: 100%">Submit</button>
 </mat-card>

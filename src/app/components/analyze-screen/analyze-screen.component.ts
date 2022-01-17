@@ -1,8 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { SurveyService } from 'src/app/services/survey.service';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {SurveyService} from 'src/app/services/survey.service';
 import {Query} from 'src/app/models/query'
-import { SurveyResult } from 'src/app/models/survey-result';
 import {GraficoModel} from "src/app/models/grafico.modele";
 
 @Component({
@@ -16,32 +15,38 @@ export class AnalyzeScreenComponent implements OnInit {
   id: number
   email: string
 
-  queryList : Query[];
-  resultList : Array<Array<GraficoModel>> =[];
-  numberOfRespondents: number=0;
+  queryList: Query[];
+  resultList: Array<Array<GraficoModel>> = [];
+  numberOfRespondents: number = 0;
 
   constructor(private props: ActivatedRoute, public router: Router,
-              private service: SurveyService ) {
+              private service: SurveyService) {
     // @ts-ignore
     this.id = this.props.snapshot.paramMap.get('id');
     // @ts-ignore
-    this.email =localStorage.getItem('email');
+    this.email = localStorage.getItem('email');
   }
 
   ngOnInit(): void {
     this.getRes();
     this.getQuery();
   }
-  getRes(){
+
+  getRes() {
     this.service.getResults(this.id, this.email).subscribe(value => {
         console.log(value);
 
-        this.resultList = value.map(x=>x.map(element=> ({value: element.value, color: this.getRandomColor(), size:'' ,legend: element.name})));
+        this.resultList = value.map(x => x.map(element => ({
+          value: element.value,
+          color: this.getRandomColor(),
+          size: '',
+          legend: element.name
+        })));
         console.log(this.resultList);
 
-      this.resultList[0].forEach(element =>{
-        this.numberOfRespondents+= element.value;
-      })
+        this.resultList[0].forEach(element => {
+          this.numberOfRespondents += element.value;
+        })
 
       }, (err) => {
         alert('Error');
@@ -49,14 +54,14 @@ export class AnalyzeScreenComponent implements OnInit {
     );
   }
 
-  getCSV(){
+  getCSV() {
     let email = localStorage.getItem('email');
 
     // @ts-ignore
-    this.service.getCSV(this.id,email).subscribe(value => {
-      const blob = new Blob([value], { type: 'text/csv' });
-      const downloadURL = URL.createObjectURL(blob);
-      window.open(downloadURL);
+    this.service.getCSV(this.id, email).subscribe(value => {
+        const blob = new Blob([value], {type: 'text/csv'});
+        const downloadURL = URL.createObjectURL(blob);
+        window.open(downloadURL);
 
       }, (err) => {
         alert('Error');
@@ -64,21 +69,22 @@ export class AnalyzeScreenComponent implements OnInit {
     );
   }
 
-
-  getQuery(): void{
+  getQuery(): void {
     this.service.getQueries(this.id).subscribe(value => {
-      this.queryList =value;
+        this.queryList = value;
       }, (err) => {
         alert('Error');
       }
     );
   }
-  toAscii(value: number) :string {
-    return  String.fromCharCode(65 + value);
+
+  toAscii(value: number): string {
+    return String.fromCharCode(65 + value);
   }
-  getRandomColor() :string{
-   let letters = '0123456789ABCDEF';
-   let color = '#';
+
+  getRandomColor(): string {
+    let letters = '0123456789ABCDEF';
+    let color = '#';
     for (var i = 0; i < 6; i++) {
       color += letters[Math.floor(Math.random() * 16)];
     }

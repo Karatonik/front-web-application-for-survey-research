@@ -41,17 +41,14 @@ export class PersonalScreenComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   // @ts-ignore
+    // @ts-ignore
     this.email = localStorage.getItem('email');
-    this.service.getByEmail(this.email).subscribe(value => {
-      if(value.id != null){
-        this.personalData = value;
-        this.edit = true;
-      }
-
-
-
-    }, (err) => {
+    this.service.getPersonalDataByEmail(this.email).subscribe(value => {
+        if (value.id != null) {
+          this.personalData = value;
+          this.edit = true;
+        }
+      }, (err) => {
         alert("Error")
       }
     );
@@ -68,19 +65,18 @@ export class PersonalScreenComponent implements OnInit {
 
     console.log(this.personalData);
     if (this.edit) {
-      this.service.edit(this.personalData).subscribe(value => {
+      this.service.editPersonalData(this.personalData).subscribe(value => {
         if (value.id == null) {
           alert("Error")
-        }else{
+        } else {
           alert("personals have been updated")
           this.router.navigate(['home']);
         }
       }, (err) => {
         alert("wrong credentials!!!")
       });
-    }
-    else{
-      this.service.set(this.personalData).subscribe(value => {
+    } else {
+      this.service.setPersonalData(this.personalData).subscribe(value => {
 
           if (value.id == null) {
             alert("Error")

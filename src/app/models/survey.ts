@@ -5,6 +5,7 @@ export interface Survey {
   queriesIds: number[];
   resultsIds: number[];
 }
+
 export interface SurveyInfo {
   id: number;
   name: string;
