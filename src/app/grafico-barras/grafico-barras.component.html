@@ -1,0 +1,12 @@
+<div class="grafico">
+  <div class="content">
+    <div class="bars" *ngFor="let item of List">
+      <span>{{item.value}}</span>
+      <div class="bar" [style.background-color]="item.color" [style.height]='item.size'></div>
+    </div>
+  </div>
+  <div class="line"></div>
+  <div class="legends">
+    <span *ngFor="let item of List">{{item.legend}}</span>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+.center-content {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: -webkit-center;
+}
+.example-form {
+  min-width: 100px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+display: grid;
+
+  width: 100%;
+}

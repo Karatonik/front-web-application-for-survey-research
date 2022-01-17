@@ -1,0 +1,89 @@
+<app-navi-bar></app-navi-bar>
+
+<mat-card class="mat-card">
+  <input type="text" matInput placeholder="name" value="" [(ngModel)]="name">
+  <input type="text" matInput placeholder="cost" value="" [(ngModel)]="cost">
+  <input type="text" matInput placeholder="quantity" value="" [(ngModel)]="quantity">
+  <button class="mat-button" (click)="setReward()" style="width: 100%"  >Add Reward</button>
+</mat-card>
+
+<a>Reward Table </a>
+<mat-card class="mat-card">
+  <mat-form-field >
+    <input matInput placeholder="Search Reward" (keyup)="applyFilterReward($event.target.value)" >
+  </mat-form-field>
+</mat-card>
+
+<div class="example-container mat-elevation-z8">
+  <table mat-table style = "width: 100%" [dataSource]="dataSourceReward" >
+    <ng-container matColumnDef="Action"  >
+      <mat-header-cell *matHeaderCellDef > Action </mat-header-cell>
+
+      <mat-cell *matCellDef="let element" >
+
+        <button class="mat-button"(click)="deleteReward(element)" >Delete</button>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="cost">
+      <mat-header-cell *matHeaderCellDef> cost </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.cost}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="quantity">
+      <mat-header-cell *matHeaderCellDef> quantity </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.quantity}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumnsReward"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumnsReward;"></mat-row>
+  </table>
+</div>
+<a>User Table </a>
+<mat-card class="mat-card">
+  <mat-form-field >
+    <input matInput placeholder="Search User" (keyup)="applyFilterUser($event.target.value)" >
+  </mat-form-field>
+</mat-card>
+<div class="example-container mat-elevation-z8">
+  <table mat-table style = "width: 100%" [dataSource]="dataSourceUser" >
+    <ng-container matColumnDef="Action"  >
+      <mat-header-cell *matHeaderCellDef > Permissions </mat-header-cell>
+
+      <mat-cell *matCellDef="let element" >
+
+        <button class="mat-button"(click)="increasePermissionsForUser(element)" >Increase</button>
+        <button class="mat-button"(click)="reducePermissionsForUser(element)" >Reduce</button>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef> email </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="points">
+      <mat-header-cell *matHeaderCellDef> points </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.points}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="activated">
+      <mat-header-cell *matHeaderCellDef> activated </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.activated}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="accountType">
+      <mat-header-cell *matHeaderCellDef> accountType </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.accountType}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumnsUser"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumnsUser;"></mat-row>
+  </table>
+
+</div>

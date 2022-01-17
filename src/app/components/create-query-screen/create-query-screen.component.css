@@ -1,0 +1,21 @@
+mat-slider {
+  width: 100%;
+}
+.hr1{
+  width:100%;
+  border-color: black;
+}
+.horizontal{
+  display: flex;
+  flex-direction: row;
+}
+.halfwidth{
+  width: 48%;
+  margin-left:1%;
+}
+.vl {
+  margin-left: 1%;
+  margin-right: 1%;
+  border-left: 2px solid black;
+  height: auto;
+}

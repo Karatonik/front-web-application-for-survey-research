@@ -1,0 +1,19 @@
+<div class="center-content">
+  <mat-card class="example-card">
+    <mat-label style="font-size: 20px" >Register</mat-label>
+    <div class="example-full-width">
+      <input type="email" matInput placeholder="Email" value="" [(ngModel)]="loginData.email">
+      <mat-icon>email</mat-icon>
+    </div>
+    <div class="example-full-width">
+      <input type="password" matInput placeholder="Password" [(ngModel)]="loginData.password">
+      <mat-icon matSuffix>vpn_key</mat-icon>
+    </div>
+    <div class="example-full-width">
+      <input type="password" matInput placeholder="Repeat password" [(ngModel)]="testPassword">
+      <mat-icon matSuffix>vpn_key</mat-icon>
+    </div>
+    <button class="mat-button" (click)="register()">Register</button>
+  </mat-card>
+</div>
+

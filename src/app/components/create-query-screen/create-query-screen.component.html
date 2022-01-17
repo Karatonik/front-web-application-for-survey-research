@@ -1,0 +1,62 @@
+<app-navi-bar></app-navi-bar>
+<mat-card class="mat-card">
+  <h3> Question nr. {{tempQuery.numberOfQuery}}</h3>
+  <div>
+    <input type="text" style="width: 100%" value="" placeholder="Question" [(ngModel)]="tempQuery.question">
+    <button mat-button class="halfwidth" (click)="createOpenQuery()">Open Question</button>
+  </div>
+  <hr class="hr1">
+
+  <div *ngIf="!openQuery">
+    <div class="horizontal">
+      <textarea name="name" rows="5" cols="40" name="answer" class="halfwidth" [(ngModel)]="newAnswer"
+                placeholder="Answer"></textarea>
+      <div class="vl"></div>
+      <button mat-button class="halfwidth" (click)="addAnswer()">Add answer</button>
+    </div>
+    <hr class="hr1">
+
+    <div>
+      <h3> Max answers : {{tempQuery.maxAnswer}}</h3>
+      <mat-form-field style="width: 100%">
+        <mat-select [(ngModel)]="tempQuery.maxAnswer" (ngModelChange)="tempQuery.maxAnswer">
+          <mat-option *ngFor="let x of tempQuery.answers;  index as i;" [value]="i" (click)="tempQuery.maxAnswer = i+1">
+            {{ i + 1 }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <hr class="hr1">
+
+    <div>
+      <mat-slide-toggle [(ngModel)]="tempQuery.checkQuery">Verification question</mat-slide-toggle>
+    </div>
+    <div *ngIf="tempQuery.checkQuery">
+      <hr class="hr1">
+      <h3> correctAnswer : {{tempQuery.answers[tempQuery.correctAnswer]}}</h3>
+      <mat-form-field style="width: 100%">
+        <mat-select [(ngModel)]="tempQuery.correctAnswer" (ngModelChange)="tempQuery.correctAnswer">
+          <mat-option *ngFor="let x of tempQuery.answers" [value]="x" (click)="setCorrectAnswer(x)">
+            {{ x }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <hr class="hr1">
+  </div>
+
+  <button mat-button class="halfwidth" (click)="previous()">Previous</button>
+  <button mat-button class="halfwidth" (click)="next()">Next</button>
+
+  <hr class="hr1">
+  <button mat-button style="width: 100%" (click)="finish()">finish</button>
+  <hr class="hr1">
+  <h3>Questions</h3>
+  <h3>{{tempQuery.numberOfQuery}} .{{tempQuery.question}}</h3>
+  <li *ngFor="let item of tempQuery.answers; index as i;">{{toAscii(i)}}.  {{ tempQuery.answers[i] }}</li>
+  <div *ngFor="let query of queryList;">
+    <h3>  {{query.numberOfQuery}}. {{query.question}}</h3>
+    <li *ngFor="let q of query.answers; index as i;">{{toAscii(i)}}.  {{ query.answers[i] }}</li>
+  </div>
+
+</mat-card>

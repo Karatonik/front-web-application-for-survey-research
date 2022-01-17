@@ -1,0 +1,21 @@
+<app-navi-bar></app-navi-bar>
+<mat-card class="mat-card" >
+  <button mat-button class ="halfwidth" (click)="getCSV()">Download Report</button>
+  <hr class="hr1">
+  <h3> Number of Respondents : {{numberOfRespondents}}
+  </h3>
+  <div  *ngFor="let query of queryList;index as j">
+    <hr class="hr1">
+    <h3>  {{query.numberOfQuery+1}}. {{query.question}}</h3>
+
+    <li  *ngFor="let q of query.answers; index as i;">{{toAscii(i)}}.  {{ query.answers[i] }}</li>
+
+    <app-grafico-barras *ngIf="!(!query.checkQuery && query.correctAnswer ==1)" [List]='resultList[j]'></app-grafico-barras>
+
+    <div *ngIf="!query.checkQuery && query.correctAnswer ==1">
+      <h3>Open question , Answers:</h3>
+      <li  *ngFor="let result of resultList[j]">{{ result.legend }} | {{result.value}} time</li>
+    </div>
+  </div>
+</mat-card>
+

@@ -1,0 +1,42 @@
+<app-navi-bar></app-navi-bar>
+
+  <mat-card class="mat-card">
+    <button class="mat-button" style="width: 100%" (click)="createSurvey()" >Add new survey</button>
+    <mat-form-field >
+      <input matInput placeholder="Search" (keyup)="applyFilter($event.target.value)" >
+
+    </mat-form-field>
+  </mat-card>
+<div class="example-container mat-elevation-z8">
+  <table mat-table style = "width: 100%" [dataSource]="dataSource" >
+
+    <ng-container matColumnDef="Action"  >
+
+      <mat-header-cell *matHeaderCellDef > Action </mat-header-cell>
+
+      <mat-cell *matCellDef="let element" >
+
+        <button class="mat-button"(click)="analyzeSurvey(element)" >Analyze</button>
+        <button class="mat-button"(click)="filterSurvey(element)" >Filter</button>
+        <button class="mat-button"(click)="deleteSurvey(element)" >Delete</button>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </table>
+
+</div>
+
+

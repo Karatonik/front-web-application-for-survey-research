@@ -1,0 +1,38 @@
+<app-navi-bar></app-navi-bar>
+<div class="bg">
+<mat-card class="mat-card" >
+  <div    *ngFor="let reward of rewardList;">
+
+    <h1 style="text-align: center" >{{reward.name}}</h1>
+    <h3>cost : {{reward.cost}} Points</h3>
+    <h3>available : {{reward.quantity}} Points</h3>
+    <button mat-button style = "alignment: center;width: 100%" (click)="getReward(reward.name)">TAKE REWARD</button>
+    <hr class="hr1">
+  </div>
+  <h1>History of transaction</h1>
+</mat-card>
+
+  <div class="example-container mat-elevation-z8">
+    <table mat-table style = "width: 100%" [dataSource]="dataSource" >
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="cost">
+        <mat-header-cell *matHeaderCellDef> cost </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.cost}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="localDataTime">
+        <mat-header-cell *matHeaderCellDef> localDataTime </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.localDateTime}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+    </table>
+</div>
+</div>
