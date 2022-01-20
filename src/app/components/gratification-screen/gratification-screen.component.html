@@ -3,31 +3,35 @@
   <mat-card class="mat-card">
     <div *ngFor="let reward of rewardList;">
 
-      <h1 style="text-align: center">{{reward.name}}</h1>
-      <h3>cost : {{reward.cost}} Points</h3>
-      <h3>available : {{reward.quantity}} Points</h3>
+      <h2 style="text-align: center">{{reward.name}}</h2>
+      <h3 style="text-align: center">Cost : {{reward.cost}} Points | Available : {{reward.quantity}}</h3>
       <button (click)="getReward(reward.name)" mat-button style="alignment: center;width: 100%">TAKE REWARD</button>
       <hr class="hr1">
     </div>
-    <h1>History of transaction</h1>
+    <h2 style="text-align: center">History of transaction</h2>
   </mat-card>
 
   <div class="example-container mat-elevation-z8">
     <table [dataSource]="dataSource" mat-table style="width: 100%">
 
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> Id</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+      </ng-container>
+
       <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef> name</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="cost">
-        <mat-header-cell *matHeaderCellDef> cost</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> Cost</mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.cost}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="localDataTime">
-        <mat-header-cell *matHeaderCellDef> localDataTime</mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.localDateTime}} </mat-cell>
+        <mat-header-cell *matHeaderCellDef> Date</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.localDateTime.substring(0,10)}} </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

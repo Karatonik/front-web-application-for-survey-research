@@ -24,7 +24,7 @@ export class AuthService {
   }
 
   sendKeyToChangePassword(email: string): Observable<{}> {
-    return this.http.put(`${this.url}/sk`, email);
+    return this.http.put(`${this.url}`, email);
   }
 
   confirmation(key: string): Observable<boolean> {

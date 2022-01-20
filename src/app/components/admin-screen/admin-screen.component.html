@@ -1,11 +1,11 @@
 <app-navi-bar></app-navi-bar>
 
 <mat-card class="mat-card">
-  <input [(ngModel)]="name" matInput placeholder="name" type="text" value="">
-  <input [(ngModel)]="cost" matInput placeholder="cost" type="text" value="">
-  <input [(ngModel)]="quantity" matInput placeholder="quantity" type="text" value="">
+  <input style="text-align: center" [(ngModel)]="name" matInput placeholder="Reward name" type="text" value="">
+  <input style="text-align: center"[(ngModel)]="cost" matInput placeholder="Reward cost" type="text" value="">
+  <input style="text-align: center" [(ngModel)]="quantity" matInput placeholder="Reward quantity" type="text" value="">
   <button (click)="setReward()" class="mat-button" style="width: 100%">Add Reward</button>
-</mat-card>
+
 
 <a>Reward Table </a>
 <mat-card class="mat-card">
@@ -26,17 +26,17 @@
     </ng-container>
 
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> name</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="cost">
-      <mat-header-cell *matHeaderCellDef> cost</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Cost</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.cost}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="quantity">
-      <mat-header-cell *matHeaderCellDef> quantity</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Quantity</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.quantity}} </mat-cell>
     </ng-container>
 
@@ -63,22 +63,22 @@
     </ng-container>
 
     <ng-container matColumnDef="email">
-      <mat-header-cell *matHeaderCellDef> email</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Email</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="points">
-      <mat-header-cell *matHeaderCellDef> points</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Points</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.points}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="activated">
-      <mat-header-cell *matHeaderCellDef> activated</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Activated</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.activated}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="accountType">
-      <mat-header-cell *matHeaderCellDef> accountType</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Role</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.accountType}} </mat-cell>
     </ng-container>
 
@@ -87,3 +87,4 @@
   </table>
 
 </div>
+</mat-card>

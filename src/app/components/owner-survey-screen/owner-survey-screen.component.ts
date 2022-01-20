@@ -71,7 +71,7 @@ export class OwnerSurveyScreenComponent implements OnInit {
     let email = localStorage.getItem('email');
 
     // @ts-ignore
-    this.service.delete(element.id, email).subscribe(value => {
+    this.service.deleteSurvey(element.id, email).subscribe(value => {
       if (value) {
         window.location.reload();
       } else {

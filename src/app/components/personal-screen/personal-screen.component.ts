@@ -81,7 +81,6 @@ export class PersonalScreenComponent implements OnInit {
           if (value.id == null) {
             alert("Error")
           } else {
-            localStorage.setItem("points", "500");
             alert("Saved, now you have access to surveys")
             this.router.navigate(['home']);
           }

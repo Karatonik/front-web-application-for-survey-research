@@ -12,7 +12,7 @@ import {UserService} from 'src/app/services/user.service';
 })
 export class GratificationScreenComponent implements OnInit {
   points: number;
-  displayedColumns: string[] = ['name', 'cost', 'localDataTime'];
+  displayedColumns: string[] = ['id','name', 'cost', 'localDataTime'];
 
   dataSource: MatTableDataSource<Award>;
   rewardList: Reward[];
